@@ -1,0 +1,1 @@
+# QawmiSoft-Word
