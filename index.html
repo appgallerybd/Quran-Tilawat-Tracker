@@ -10,31 +10,28 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --ink:        #0B1A12;
-  --forest:     #0F2D1C;
-  --forest2:    #163D27;
-  --forest3:    #1E5235;
-  --emerald:    #2A7A52;
-  --mint:       #4DB87A;
-  --gold-deep:  #7A5010;
-  --gold:       #C49A2E;
-  --gold-mid:   #DDB84A;
-  --gold-light: #EDD078;
-  --gold-pale:  #F5E8B8;
-  --cream:      #FAF5E4;
-  --cream2:     #F0E8CC;
-  --white10:    rgba(255,255,255,0.10);
-  --white06:    rgba(255,255,255,0.06);
-  --white04:    rgba(255,255,255,0.04);
-  --gold20:     rgba(196,154,46,0.20);
-  --gold35:     rgba(196,154,46,0.35);
-  --gold50:     rgba(196,154,46,0.50);
-  --text-dim:   rgba(250,245,228,0.50);
-  --text-mid:   rgba(250,245,228,0.70);
-  --shadow-deep: 0 24px 80px rgba(0,0,0,0.6), 0 8px 24px rgba(0,0,0,0.4);
-  --radius-card: 20px;
-  --radius-sm:   10px;
-  --transition:  all 0.25s cubic-bezier(0.4,0,0.2,1);
+  --ink:        #080F0A;
+  --forest:     #0C1F12;
+  --forest2:    #122B19;
+  --forest3:    #1A3D24;
+  --emerald:    #266645;
+  --mint:       #45B36B;
+  --gold-deep:  #6B4410;
+  --gold:       #BC9328;
+  --gold-mid:   #D4AE40;
+  --gold-light: #E8CC70;
+  --gold-pale:  #F2E2A8;
+  --cream:      #F8F2E2;
+  --text-mid:   rgba(248,242,226,0.68);
+  --text-dim:   rgba(248,242,226,0.42);
+  --gold15:     rgba(188,147,40,0.15);
+  --gold30:     rgba(188,147,40,0.30);
+  --gold50:     rgba(188,147,40,0.50);
+  --white05:    rgba(255,255,255,0.05);
+  --white08:    rgba(255,255,255,0.08);
+  --r-card:     18px;
+  --r-sm:       10px;
+  --ease:       cubic-bezier(0.4,0,0.2,1);
 }
 
 html { scroll-behavior: smooth; }
@@ -45,750 +42,468 @@ body {
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  padding: 1.5rem 1rem 3rem;
+  padding: 1.5rem 1rem 4rem;
   position: relative;
   overflow-x: hidden;
 }
 
-/* Ambient background */
 body::before {
   content: '';
-  position: fixed;
-  inset: 0;
+  position: fixed; inset: 0;
   background:
-    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(42,122,82,0.18) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 80% 110%, rgba(196,154,46,0.12) 0%, transparent 55%),
-    radial-gradient(ellipse 100% 60% at 50% 50%, rgba(15,45,28,0.8) 0%, transparent 100%);
-  pointer-events: none;
-  z-index: 0;
+    radial-gradient(ellipse 70% 45% at 15% 0%, rgba(38,102,69,0.16) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 35% at 85% 105%, rgba(188,147,40,0.10) 0%, transparent 55%);
+  pointer-events: none; z-index: 0;
 }
 
-/* Geometric pattern overlay */
 body::after {
   content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C49A2E' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 0;
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='56' height='56' viewBox='0 0 56 56' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23BC9328' fill-opacity='0.028'%3E%3Cpath d='M28 4l3 8h8l-6.5 5 2.5 8L28 20l-7 5 2.5-8L17 12h8zm0 32l3 8h8l-6.5 5 2.5 8L28 52l-7 5 2.5-8L17 44h8z'/%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0;
 }
 
 .wrap {
-  width: 100%;
-  max-width: 500px;
-  position: relative;
-  z-index: 1;
+  width: 100%; max-width: 480px;
+  position: relative; z-index: 1;
 }
 
-/* ===== HEADER ===== */
+/* ── HEADER ── */
 .header {
   text-align: center;
-  padding: 0 1rem 1.5rem;
-  position: relative;
+  padding: 0.5rem 1rem 1.4rem;
 }
 
-.header-ornament {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 0.9rem;
+.hdr-orn {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; margin-bottom: 0.9rem;
+}
+.orn-l { flex:1; height:1px; background: linear-gradient(90deg,transparent,var(--gold-mid)); }
+.orn-r { flex:1; height:1px; background: linear-gradient(90deg,var(--gold-mid),transparent); }
+.orn-gem {
+  width: 10px; height: 10px;
+  background: var(--gold-mid);
+  transform: rotate(45deg);
+  box-shadow: 0 0 8px rgba(188,147,40,0.5);
 }
 
-.orn-line {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold-mid));
-}
-.orn-line.r { background: linear-gradient(90deg, var(--gold-mid), transparent); }
-
-.orn-star {
-  font-size: 1.1rem;
-  color: var(--gold-mid);
-  animation: spin-slow 12s linear infinite;
-}
-@keyframes spin-slow { to { transform: rotate(360deg); } }
-
-.bismillah-text {
-  font-family: 'Amiri Quran', 'Amiri', serif;
-  font-size: 1.9rem;
+.bismillah {
+  font-family: 'Amiri Quran','Amiri',serif;
+  font-size: 1.85rem;
   color: var(--gold-light);
-  letter-spacing: 4px;
-  line-height: 1.5;
-  text-shadow: 0 0 30px rgba(196,154,46,0.3), 0 2px 4px rgba(0,0,0,0.5);
-  margin-bottom: 0.7rem;
+  letter-spacing: 4px; line-height: 1.6;
+  text-shadow: 0 0 28px rgba(188,147,40,0.28), 0 2px 6px rgba(0,0,0,0.5);
+  margin-bottom: 0.65rem;
 }
-
 .app-title {
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: var(--cream);
-  letter-spacing: 0.5px;
+  font-size: 1.25rem; font-weight: 700;
+  color: var(--cream); letter-spacing: 0.3px;
 }
 .app-sub {
-  font-size: 0.72rem;
-  color: var(--gold-mid);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-top: 4px;
-  opacity: 0.85;
+  font-size: 0.68rem; color: var(--gold-mid);
+  letter-spacing: 2.5px; text-transform: uppercase;
+  margin-top: 5px; opacity: 0.8;
 }
 
-/* ===== NEXT READING CARD (HERO) ===== */
+/* ── NEXT CARD (HERO) ── */
 .next-card {
-  background: linear-gradient(135deg, #163D27 0%, #0F2D1C 40%, #1a3d28 100%);
-  border: 1px solid var(--gold35);
-  border-radius: var(--radius-card);
-  padding: 0;
-  margin-bottom: 1.2rem;
+  background: linear-gradient(145deg,#122B19 0%,#0C1F12 55%,#172E1E 100%);
+  border: 1px solid var(--gold30);
+  border-radius: var(--r-card);
+  margin-bottom: 1.1rem;
   overflow: hidden;
-  box-shadow: var(--shadow-deep), inset 0 1px 0 rgba(255,255,255,0.06);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.03) inset;
   position: relative;
-  animation: fadeUp 0.5s ease both;
+  animation: up 0.5s var(--ease) both;
 }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+@keyframes up { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:none} }
 
-.next-card-glow {
-  position: absolute;
-  top: -40px; right: -40px;
-  width: 200px; height: 200px;
-  background: radial-gradient(circle, rgba(196,154,46,0.12) 0%, transparent 70%);
+.nc-glow {
+  position: absolute; top:-60px; right:-60px;
+  width:220px; height:220px;
+  background: radial-gradient(circle,rgba(188,147,40,0.1) 0%,transparent 70%);
+  pointer-events: none;
+}
+.nc-glow2 {
+  position: absolute; bottom:-40px; left:-30px;
+  width:160px; height:160px;
+  background: radial-gradient(circle,rgba(38,102,69,0.12) 0%,transparent 70%);
   pointer-events: none;
 }
 
-.next-card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 1.4rem 0.8rem;
-  border-bottom: 1px solid rgba(196,154,46,0.12);
+.nc-top {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.9rem 1.3rem 0.75rem;
+  border-bottom: 1px solid rgba(188,147,40,0.1);
 }
-
 .nc-badge {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  background: rgba(196,154,46,0.12);
-  border: 1px solid var(--gold35);
-  border-radius: 30px;
-  padding: 4px 12px 4px 8px;
+  display: flex; align-items: center; gap: 7px;
+  background: rgba(188,147,40,0.1);
+  border: 1px solid var(--gold30);
+  border-radius: 99px;
+  padding: 4px 12px 4px 9px;
 }
-.nc-badge-dot {
-  width: 7px; height: 7px;
-  border-radius: 50%;
+.nc-dot {
+  width:7px; height:7px; border-radius:50%;
   background: var(--gold-mid);
-  animation: pulse-dot 2s ease-in-out infinite;
+  animation: blink 2.2s ease-in-out infinite;
 }
-@keyframes pulse-dot {
-  0%,100% { opacity:1; transform:scale(1); }
-  50% { opacity:0.5; transform:scale(0.7); }
+@keyframes blink { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.65)} }
+.nc-badge-txt {
+  font-size: 0.62rem; color: var(--gold-mid);
+  letter-spacing: 1.8px; text-transform: uppercase; font-weight: 600;
 }
-.nc-badge-text {
-  font-size: 0.65rem;
-  color: var(--gold-mid);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  font-weight: 600;
+.nc-updated {
+  font-size: 0.63rem; color: var(--text-dim);
 }
 
-.nc-date {
-  font-size: 0.68rem;
-  color: var(--text-dim);
+.nc-body {
+  display: flex; align-items: center;
+  gap: 1rem; padding: 1rem 1.3rem 0.85rem;
 }
-
-.next-card-body {
-  padding: 1.1rem 1.4rem 0.9rem;
-  display: flex;
-  align-items: center;
-  gap: 1.1rem;
-}
-
-.nc-icon-wrap {
-  position: relative;
-  flex-shrink: 0;
-}
-.nc-icon {
-  width: 58px; height: 58px;
-  background: linear-gradient(135deg, rgba(196,154,46,0.2), rgba(196,154,46,0.05));
+.nc-book-wrap { position:relative; flex-shrink:0; }
+.nc-book {
+  width:56px; height:56px;
+  background: linear-gradient(145deg,rgba(188,147,40,0.18),rgba(188,147,40,0.04));
   border: 1.5px solid var(--gold50);
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.6rem;
+  border-radius: 14px;
+  display:flex; align-items:center; justify-content:center;
+  font-size: 1.55rem;
 }
-.nc-icon-ring {
-  position: absolute;
-  inset: -5px;
-  border: 1px solid rgba(196,154,46,0.2);
-  border-radius: 20px;
-  animation: ring-pulse 3s ease-in-out infinite;
+.nc-ring {
+  position:absolute; inset:-6px;
+  border:1px solid rgba(188,147,40,0.18);
+  border-radius:20px;
+  animation: ring 3.5s ease-in-out infinite;
 }
-@keyframes ring-pulse {
-  0%,100% { opacity:0.6; transform:scale(1); }
-  50% { opacity:0.2; transform:scale(1.05); }
-}
+@keyframes ring { 0%,100%{opacity:.55;transform:scale(1)} 50%{opacity:.15;transform:scale(1.06)} }
 
-.nc-text { flex: 1; min-width: 0; }
-
+.nc-info { flex:1; min-width:0; }
 .nc-label {
-  font-size: 0.62rem;
-  color: var(--gold-mid);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-weight: 600;
-  margin-bottom: 4px;
+  font-size: 0.6rem; color: var(--gold-mid);
+  letter-spacing: 2px; text-transform: uppercase;
+  font-weight: 600; margin-bottom: 4px;
 }
 .nc-surah {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--cream);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: 1.0rem; font-weight: 700; color: var(--cream);
+  white-space: nowrap; overflow:hidden; text-overflow:ellipsis;
 }
-.nc-detail {
-  font-size: 0.75rem;
-  color: var(--text-mid);
-  margin-top: 4px;
-  line-height: 1.5;
+.nc-ayah-line {
+  font-size: 0.73rem; color: var(--text-mid); margin-top: 3px;
 }
 
 .nc-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  padding: 0 1.4rem 1.1rem;
+  display:flex; flex-wrap:wrap; gap:6px;
+  padding: 0 1.3rem 1.1rem;
 }
 .pill {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  padding: 5px 11px;
-  border-radius: 30px;
-  font-size: 0.7rem;
-  font-weight: 600;
+  display:flex; align-items:center; gap:5px;
+  padding: 5px 11px; border-radius:99px;
+  font-size: 0.68rem; font-weight:600;
 }
-.pill-gold {
-  background: rgba(196,154,46,0.15);
-  border: 1px solid var(--gold35);
-  color: var(--gold-light);
-}
-.pill-green {
-  background: rgba(42,122,82,0.2);
-  border: 1px solid rgba(42,122,82,0.4);
-  color: var(--mint);
-}
-.pill-gray {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-  color: var(--text-mid);
-}
-.pill-icon { font-size: 0.75rem; }
+.p-gold  { background:rgba(188,147,40,0.13); border:1px solid var(--gold30); color:var(--gold-light); }
+.p-green { background:rgba(38,102,69,0.18);  border:1px solid rgba(38,102,69,0.38); color:var(--mint); }
+.p-gray  { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:var(--text-mid); }
 
-/* ===== STATS ROW ===== */
+/* ── STATS ── */
 .stats-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-  margin-bottom: 1.2rem;
-  animation: fadeUp 0.5s 0.1s ease both;
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 8px; margin-bottom: 1.1rem;
+  animation: up 0.5s 0.08s var(--ease) both;
 }
-
 .stat-box {
-  background: linear-gradient(135deg, var(--forest2), var(--forest));
-  border: 1px solid rgba(196,154,46,0.18);
-  border-radius: 14px;
-  padding: 0.75rem 0.4rem;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  transition: var(--transition);
+  background: linear-gradient(145deg,var(--forest2),var(--forest));
+  border: 1px solid rgba(188,147,40,0.15);
+  border-radius: 14px; padding: 0.8rem 0.4rem;
+  text-align: center; position:relative; overflow:hidden;
+  transition: transform 0.2s, border-color 0.2s;
 }
 .stat-box::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 40%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  border-radius: 2px;
+  content:''; position:absolute; bottom:0; left:50%; transform:translateX(-50%);
+  width:45%; height:2px;
+  background: linear-gradient(90deg,transparent,var(--gold),transparent);
 }
-.stat-box:hover { transform: translateY(-2px); border-color: var(--gold50); }
-
+.stat-box:hover { transform:translateY(-2px); border-color:var(--gold30); }
 .stat-val {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--gold-light);
-  line-height: 1;
+  font-size: 1.2rem; font-weight:700; color:var(--gold-light); line-height:1;
 }
 .stat-lbl {
-  font-size: 0.58rem;
-  color: var(--text-dim);
-  margin-top: 4px;
-  line-height: 1.3;
+  font-size: 0.58rem; color:var(--text-dim); margin-top:5px; line-height:1.4;
 }
 
-/* ===== SECTION ===== */
-.section {
-  margin-bottom: 1.2rem;
-  animation: fadeUp 0.5s 0.15s ease both;
-}
-
+/* ── SECTION HEAD ── */
 .sec-head {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 0.75rem;
+  display:flex; align-items:center; gap:9px; margin-bottom: 0.7rem;
 }
-.sec-icon {
-  width: 28px; height: 28px;
-  background: var(--gold20);
-  border: 1px solid var(--gold35);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.85rem;
-  flex-shrink: 0;
+.sec-ico {
+  width:27px; height:27px;
+  background: var(--gold15); border:1px solid var(--gold30);
+  border-radius:8px; display:flex; align-items:center; justify-content:center;
+  font-size:0.8rem; flex-shrink:0;
 }
-.sec-title {
-  font-size: 0.72rem;
-  color: var(--gold-mid);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-weight: 600;
+.sec-ttl {
+  font-size:0.68rem; color:var(--gold-mid);
+  letter-spacing:2.2px; text-transform:uppercase; font-weight:600;
 }
-.sec-line {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, var(--gold20), transparent);
-}
+.sec-line { flex:1; height:1px; background:linear-gradient(90deg,var(--gold15),transparent); }
 
-/* ===== PROGRESS ===== */
-.progress-card {
-  background: linear-gradient(135deg, var(--forest2), var(--forest));
-  border: 1px solid rgba(196,154,46,0.15);
-  border-radius: var(--radius-card);
-  padding: 1.1rem 1.3rem;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-}
+/* ── PROGRESS ── */
+.section { margin-bottom: 1.1rem; animation: up 0.5s 0.12s var(--ease) both; }
 
+.prog-card {
+  background: linear-gradient(145deg,var(--forest2),var(--forest));
+  border: 1px solid rgba(188,147,40,0.14);
+  border-radius: var(--r-card);
+  padding: 1.1rem 1.25rem;
+  box-shadow: 0 4px 22px rgba(0,0,0,0.3);
+}
 .prog-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 0.9rem;
+  display:flex; justify-content:space-between; align-items:flex-end;
+  margin-bottom: 0.85rem;
 }
-.prog-pct-big {
-  font-size: 2.4rem;
-  font-weight: 700;
-  color: var(--gold-light);
-  line-height: 1;
+.prog-big {
+  font-size: 2.3rem; font-weight:700; color:var(--gold-light); line-height:1;
 }
-.prog-pct-big span {
-  font-size: 1rem;
-  color: var(--gold-mid);
-  margin-left: 2px;
+.prog-big span { font-size:1rem; color:var(--gold-mid); margin-left:1px; }
+.prog-right { text-align:right; }
+.prog-done { font-size:0.8rem; font-weight:600; color:var(--cream); }
+.prog-tot  { font-size:0.63rem; color:var(--text-dim); margin-top:2px; }
+
+.bar-bg {
+  background:rgba(255,255,255,0.07); border-radius:99px;
+  height:7px; overflow:hidden; margin-bottom:0.65rem;
 }
-.prog-info { text-align: right; }
-.prog-done {
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--cream);
+.bar-fill {
+  height:100%;
+  background: linear-gradient(90deg,var(--emerald),var(--gold-mid));
+  border-radius:99px;
+  transition: width 0.9s cubic-bezier(0.4,0,0.2,1);
+  position:relative;
 }
-.prog-total {
-  font-size: 0.66rem;
-  color: var(--text-dim);
-  margin-top: 2px;
+.bar-fill::after {
+  content:''; position:absolute; right:0; top:0; bottom:0;
+  width:5px; background:var(--gold-pale);
+  border-radius:99px; box-shadow:0 0 8px var(--gold-mid);
 }
 
-.prog-bar-bg {
-  background: rgba(255,255,255,0.07);
-  border-radius: 99px;
-  height: 8px;
-  overflow: hidden;
-  margin-bottom: 0.6rem;
+.juz-grid {
+  display:flex; gap:3px; flex-wrap:wrap;
 }
-.prog-bar-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--emerald), var(--gold-mid));
-  border-radius: 99px;
-  transition: width 0.8s cubic-bezier(0.4,0,0.2,1);
-  position: relative;
+.jd {
+  width:13px; height:13px; border-radius:3px;
+  background:rgba(255,255,255,0.055);
+  border:1px solid rgba(255,255,255,0.08);
+  transition: all 0.3s var(--ease);
+  position:relative; cursor:default;
 }
-.prog-bar-fill::after {
-  content: '';
-  position: absolute;
-  right: 0; top: 0; bottom: 0;
-  width: 4px;
-  background: var(--gold-pale);
-  border-radius: 99px;
-  box-shadow: 0 0 8px var(--gold-mid);
+.jd.done    { background:linear-gradient(135deg,var(--emerald),var(--forest3)); border-color:var(--mint); }
+.jd.current { background:linear-gradient(135deg,var(--gold-deep),var(--gold)); border-color:var(--gold-light); box-shadow:0 0 6px rgba(188,147,40,0.5); }
+.jd:hover::after {
+  content:attr(title);
+  position:absolute; bottom:calc(100% + 5px); left:50%; transform:translateX(-50%);
+  background:var(--forest); border:1px solid var(--gold30);
+  color:var(--cream); font-size:0.58rem; padding:3px 7px;
+  border-radius:5px; white-space:nowrap; z-index:20;
+  font-family:'Noto Serif Bengali',serif; pointer-events:none;
 }
 
-.juz-mini-row {
-  display: flex;
-  gap: 3px;
-  flex-wrap: wrap;
+/* ── UPDATE CARD ── */
+.upd-card {
+  background: linear-gradient(145deg,var(--forest2),var(--forest));
+  border: 1px solid rgba(188,147,40,0.16);
+  border-radius: var(--r-card); overflow:hidden;
+  box-shadow:0 4px 22px rgba(0,0,0,0.3);
+  animation: up 0.5s 0.16s var(--ease) both;
 }
-.juz-dot {
-  width: 14px; height: 14px;
-  border-radius: 3px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.08);
-  transition: var(--transition);
-  cursor: default;
-  position: relative;
+.upd-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 0.85rem 1.2rem; cursor:pointer;
+  transition: background 0.2s; user-select:none;
 }
-.juz-dot.done {
-  background: linear-gradient(135deg, var(--emerald), var(--forest3));
-  border-color: var(--mint);
+.upd-header:hover { background:rgba(255,255,255,0.02); }
+.upd-hl { display:flex; align-items:center; gap:10px; }
+.upd-ico {
+  width:34px; height:34px;
+  background:linear-gradient(135deg,var(--gold-deep),var(--gold15));
+  border:1px solid var(--gold30); border-radius:10px;
+  display:flex; align-items:center; justify-content:center; font-size:1rem;
 }
-.juz-dot.current {
-  background: linear-gradient(135deg, var(--gold-deep), var(--gold));
-  border-color: var(--gold-light);
-  box-shadow: 0 0 6px rgba(196,154,46,0.5);
-}
-.juz-dot:hover::after {
-  content: attr(title);
-  position: absolute;
-  bottom: calc(100% + 5px);
-  left: 50%; transform: translateX(-50%);
-  background: var(--forest);
-  border: 1px solid var(--gold35);
-  color: var(--cream);
-  font-size: 0.6rem;
-  padding: 3px 7px;
-  border-radius: 5px;
-  white-space: nowrap;
-  z-index: 10;
-  font-family: 'Noto Serif Bengali', serif;
-  pointer-events: none;
-}
-
-/* ===== UPDATE FORM CARD ===== */
-.update-card {
-  background: linear-gradient(135deg, var(--forest2), var(--forest));
-  border: 1px solid rgba(196,154,46,0.18);
-  border-radius: var(--radius-card);
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-}
-
-.update-card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.9rem 1.2rem;
-  cursor: pointer;
-  transition: var(--transition);
-  user-select: none;
-}
-.update-card-header:hover { background: rgba(255,255,255,0.03); }
-
-.uch-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.uch-icon {
-  width: 34px; height: 34px;
-  background: linear-gradient(135deg, var(--gold-deep), var(--gold20));
-  border: 1px solid var(--gold35);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-}
-.uch-title {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--cream);
-}
-.uch-sub {
-  font-size: 0.65rem;
-  color: var(--text-dim);
-  margin-top: 1px;
-}
-.uch-arrow {
-  font-size: 0.9rem;
-  color: var(--gold-mid);
-  transition: transform 0.3s ease;
-}
-.uch-arrow.open { transform: rotate(180deg); }
+.upd-ttl { font-size:0.85rem; font-weight:600; color:var(--cream); }
+.upd-sub { font-size:0.63rem; color:var(--text-dim); margin-top:2px; }
+.upd-arrow { font-size:0.85rem; color:var(--gold-mid); transition:transform 0.3s; }
+.upd-arrow.open { transform:rotate(180deg); }
 
 .form-body {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
+  max-height:0; overflow:hidden;
+  transition: max-height 0.4s var(--ease);
 }
-.form-body.open { max-height: 600px; }
-
+.form-body.open { max-height:500px; }
 .form-inner {
   padding: 0 1.2rem 1.2rem;
-  border-top: 1px solid rgba(196,154,46,0.1);
+  border-top:1px solid rgba(188,147,40,0.09);
 }
 
-.form-section-label {
-  font-size: 0.62rem;
-  color: var(--gold-mid);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-weight: 600;
+.flabel {
+  font-size:0.6rem; color:var(--gold-mid);
+  letter-spacing:2px; text-transform:uppercase; font-weight:600;
   margin: 0.9rem 0 0.5rem;
 }
 
-.form-grid-3 {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 8px;
-  margin-bottom: 8px;
-}
-.form-grid-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin-bottom: 8px;
-}
+.fg2 { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:8px; }
+.fg3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-bottom:8px; }
+.fg  { display:flex; flex-direction:column; gap:5px; }
+.fg > label { font-size:0.62rem; color:var(--text-dim); }
 
-.fg {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-.fg label {
-  font-size: 0.63rem;
-  color: var(--text-dim);
-}
-
-select, input[type="text"], input[type="number"] {
-  background: rgba(11,26,18,0.7);
-  border: 1px solid rgba(196,154,46,0.2);
-  border-radius: 9px;
-  color: var(--cream);
-  padding: 8px 10px;
-  font-size: 0.78rem;
-  font-family: inherit;
-  outline: none;
-  transition: var(--transition);
-  width: 100%;
-  -webkit-appearance: none;
+select, input[type="text"] {
+  background:rgba(8,15,10,0.75);
+  border:1px solid rgba(188,147,40,0.2);
+  border-radius:9px; color:var(--cream);
+  padding:8px 10px; font-size:0.78rem;
+  font-family:inherit; outline:none; width:100%;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  -webkit-appearance:none;
 }
 select:focus, input:focus {
-  border-color: var(--gold50);
-  background: rgba(11,26,18,0.9);
-  box-shadow: 0 0 0 3px rgba(196,154,46,0.08);
+  border-color:var(--gold50);
+  box-shadow:0 0 0 3px rgba(188,147,40,0.07);
 }
-select option { background: #163D27; color: var(--cream); }
+select option { background:#122B19; color:var(--cream); }
 
-.divider-form {
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(196,154,46,0.2), transparent);
-  margin: 0.8rem 0;
+.form-div {
+  width:100%; height:1px;
+  background:linear-gradient(90deg,transparent,rgba(188,147,40,0.18),transparent);
+  margin:0.85rem 0;
 }
 
-.btn-save {
-  width: 100%;
-  background: linear-gradient(135deg, var(--gold-deep) 0%, var(--gold) 50%, var(--gold-mid) 100%);
-  border: none;
-  border-radius: 12px;
-  color: #1A1005;
-  padding: 12px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  cursor: pointer;
-  font-family: inherit;
-  letter-spacing: 0.5px;
-  transition: var(--transition);
-  position: relative;
-  overflow: hidden;
-}
-.btn-save::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
-}
-.btn-save:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(196,154,46,0.35); }
-.btn-save:active { transform: translateY(0); }
-
-/* ===== HISTORY ===== */
-.history-card {
-  background: linear-gradient(135deg, var(--forest2), var(--forest));
-  border: 1px solid rgba(196,154,46,0.12);
-  border-radius: var(--radius-card);
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-  animation: fadeUp 0.5s 0.2s ease both;
-}
-
-.history-card-header {
-  padding: 0.9rem 1.2rem;
-  border-bottom: 1px solid rgba(196,154,46,0.1);
+.info-box {
+  background: rgba(188,147,40,0.07);
+  border: 1px solid rgba(188,147,40,0.18);
+  border-radius: 10px;
+  padding: 0.65rem 0.9rem;
+  margin-bottom: 0.8rem;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.hch-title {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--cream);
-  display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
 }
+.info-box-icon { font-size: 0.9rem; flex-shrink: 0; margin-top: 1px; }
+.info-box-text { font-size: 0.68rem; color: var(--gold-light); line-height: 1.6; }
+.info-val { font-weight: 700; color: var(--cream); }
 
-.badge-count {
-  background: var(--gold20);
-  border: 1px solid var(--gold35);
-  border-radius: 30px;
-  padding: 1px 9px;
-  font-size: 0.62rem;
-  color: var(--gold-mid);
+.btn-save {
+  width:100%;
+  background:linear-gradient(135deg,var(--gold-deep) 0%,var(--gold) 50%,var(--gold-mid) 100%);
+  border:none; border-radius:12px; color:#1A0F02;
+  padding:12px; font-size:0.88rem; font-weight:700;
+  cursor:pointer; font-family:inherit; letter-spacing:0.3px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position:relative; overflow:hidden;
 }
+.btn-save::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,0.13),transparent);
+}
+.btn-save:hover { transform:translateY(-1px); box-shadow:0 6px 22px rgba(188,147,40,0.32); }
+.btn-save:active { transform:none; }
 
-.btn-clear {
-  background: transparent;
-  border: 1px solid rgba(255,80,80,0.25);
-  border-radius: 7px;
-  color: rgba(255,120,120,0.6);
-  font-size: 0.62rem;
-  padding: 4px 10px;
-  cursor: pointer;
-  font-family: inherit;
-  transition: var(--transition);
+/* ── HISTORY ── */
+.hist-card {
+  background:linear-gradient(145deg,var(--forest2),var(--forest));
+  border:1px solid rgba(188,147,40,0.12);
+  border-radius:var(--r-card); overflow:hidden;
+  box-shadow:0 4px 22px rgba(0,0,0,0.3);
+  animation: up 0.5s 0.2s var(--ease) both;
 }
-.btn-clear:hover {
-  background: rgba(255,80,80,0.1);
-  color: #FF8080;
-  border-color: rgba(255,80,80,0.4);
+.hist-head {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0.85rem 1.2rem;
+  border-bottom:1px solid rgba(188,147,40,0.09);
 }
+.hist-ttl {
+  font-size:0.8rem; font-weight:600; color:var(--cream);
+  display:flex; align-items:center; gap:8px;
+}
+.badge-n {
+  background:var(--gold15); border:1px solid var(--gold30);
+  border-radius:99px; padding:1px 9px;
+  font-size:0.6rem; color:var(--gold-mid);
+}
+.btn-clr {
+  background:transparent;
+  border:1px solid rgba(255,80,80,0.22);
+  border-radius:7px; color:rgba(255,130,130,0.55);
+  font-size:0.6rem; padding:4px 10px;
+  cursor:pointer; font-family:inherit; transition:all 0.2s;
+}
+.btn-clr:hover { background:rgba(255,80,80,0.1); color:#FF8888; border-color:rgba(255,80,80,0.38); }
 
-.h-list { padding: 0.5rem 0; }
+.h-list { padding:0.4rem 0; }
 
 .h-item {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 12px;
-  padding: 0.7rem 1.2rem;
-  transition: var(--transition);
-  cursor: default;
+  display:grid; grid-template-columns:auto 1fr auto;
+  align-items:center; gap:11px;
+  padding:0.7rem 1.2rem;
+  transition:background 0.15s; cursor:default;
 }
-.h-item:hover { background: rgba(255,255,255,0.04); }
-.h-item + .h-item { border-top: 1px solid rgba(255,255,255,0.04); }
+.h-item:hover { background:rgba(255,255,255,0.03); }
+.h-item + .h-item { border-top:1px solid rgba(255,255,255,0.035); }
 
 .h-num {
-  width: 28px; height: 28px;
-  background: var(--white06);
-  border: 1px solid rgba(196,154,46,0.15);
-  border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.65rem;
-  color: var(--gold-mid);
-  font-weight: 600;
-  flex-shrink: 0;
+  width:27px; height:27px;
+  background:var(--white05); border:1px solid rgba(188,147,40,0.14);
+  border-radius:7px; display:flex; align-items:center; justify-content:center;
+  font-size:0.62rem; color:var(--gold-mid); font-weight:600; flex-shrink:0;
 }
-
 .h-main {}
-.h-surah {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--cream);
+.h-surah { font-size:0.79rem; font-weight:600; color:var(--cream); }
+.h-tags {
+  display:flex; flex-wrap:wrap; gap:4px; margin-top:4px;
 }
-.h-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  margin-top: 4px;
+.ht {
+  font-size:0.59rem; padding:2px 7px; border-radius:99px; font-weight:500;
 }
-.h-pill {
-  font-size: 0.6rem;
-  padding: 2px 7px;
-  border-radius: 20px;
-  font-weight: 500;
-}
-.hp-juz { background: rgba(196,154,46,0.12); color: var(--gold-mid); border: 1px solid rgba(196,154,46,0.25); }
-.hp-page { background: rgba(42,122,82,0.15); color: var(--mint); border: 1px solid rgba(42,122,82,0.3); }
-.hp-ayah { background: rgba(255,255,255,0.06); color: var(--text-mid); border: 1px solid rgba(255,255,255,0.1); }
-.hp-note { background: rgba(255,220,100,0.08); color: rgba(255,220,100,0.7); border: 1px solid rgba(255,220,100,0.15); }
+.ht-j  { background:rgba(188,147,40,0.12); color:var(--gold-mid); border:1px solid rgba(188,147,40,0.24); }
+.ht-p  { background:rgba(38,102,69,0.16);  color:var(--mint);     border:1px solid rgba(38,102,69,0.3); }
+.ht-a  { background:rgba(255,255,255,0.05); color:var(--text-mid); border:1px solid rgba(255,255,255,0.1); }
+.ht-n  { background:rgba(255,215,80,0.07); color:rgba(255,215,80,0.65); border:1px solid rgba(255,215,80,0.14); }
 
 .h-right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 5px;
+  display:flex; flex-direction:column; align-items:flex-end; gap:5px;
 }
-.h-date {
-  font-size: 0.62rem;
-  color: var(--text-dim);
-  white-space: nowrap;
-}
+.h-date { font-size:0.6rem; color:var(--text-dim); white-space:nowrap; }
 .btn-del {
-  background: transparent;
-  border: none;
-  color: rgba(255,255,255,0.18);
-  cursor: pointer;
-  font-size: 0.75rem;
-  padding: 2px 5px;
-  border-radius: 4px;
-  transition: var(--transition);
+  background:transparent; border:none;
+  color:rgba(255,255,255,0.16); cursor:pointer;
+  font-size:0.72rem; padding:2px 5px; border-radius:4px; transition:all 0.2s;
 }
-.btn-del:hover { color: #FF6B6B; background: rgba(255,107,107,0.1); }
+.btn-del:hover { color:#FF7070; background:rgba(255,112,112,0.1); }
 
 .h-empty {
-  text-align: center;
-  padding: 2rem 1rem;
-  color: var(--text-dim);
-  font-size: 0.78rem;
-  line-height: 2;
+  text-align:center; padding:2rem 1rem;
+  color:var(--text-dim); font-size:0.76rem; line-height:2;
 }
-.h-empty-icon { font-size: 2rem; display: block; margin-bottom: 0.5rem; opacity: 0.4; }
+.h-empty-ico { font-size:2rem; display:block; margin-bottom:0.4rem; opacity:0.35; }
 
-/* ===== TOAST ===== */
+/* ── TOAST ── */
 .toast {
-  position: fixed;
-  bottom: 28px;
-  left: 50%;
-  transform: translateX(-50%) translateY(100px);
-  background: linear-gradient(135deg, var(--forest3), var(--forest2));
-  border: 1px solid var(--gold50);
-  color: var(--cream);
-  padding: 10px 22px;
-  border-radius: 99px;
-  font-size: 0.78rem;
-  font-family: 'Noto Serif Bengali', serif;
-  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
-  z-index: 1000;
-  pointer-events: none;
-  white-space: nowrap;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  position:fixed; bottom:26px; left:50%;
+  transform:translateX(-50%) translateY(90px);
+  background:linear-gradient(135deg,var(--forest3),var(--forest2));
+  border:1px solid var(--gold50); color:var(--cream);
+  padding:10px 22px; border-radius:99px;
+  font-size:0.76rem; font-family:'Noto Serif Bengali',serif;
+  transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  z-index:1000; pointer-events:none; white-space:nowrap;
+  box-shadow:0 8px 28px rgba(0,0,0,0.45);
 }
-.toast.show { transform: translateX(-50%) translateY(0); }
+.toast.show { transform:translateX(-50%) translateY(0); }
 
-/* ===== FOOTER ===== */
 .footer {
-  text-align: center;
-  padding: 1.5rem 0 0;
-  font-size: 0.62rem;
-  color: rgba(196,154,46,0.35);
-  letter-spacing: 1.5px;
-  animation: fadeUp 0.5s 0.3s ease both;
+  text-align:center; padding:1.4rem 0 0;
+  font-size:0.6rem; color:rgba(188,147,40,0.3);
+  letter-spacing:2px;
+  animation: up 0.5s 0.25s var(--ease) both;
 }
-
-/* scrollbar */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--gold20); border-radius: 2px; }
 </style>
 </head>
 <body>
@@ -796,57 +511,53 @@ select option { background: #163D27; color: var(--cream); }
 
   <!-- HEADER -->
   <div class="header">
-    <div class="header-ornament">
-      <div class="orn-line"></div>
-      <div class="orn-star">✦</div>
-      <div class="orn-line r"></div>
+    <div class="hdr-orn">
+      <div class="orn-l"></div>
+      <div class="orn-gem"></div>
+      <div class="orn-r"></div>
     </div>
-    <div class="bismillah-text">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+    <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
     <div class="app-title">কুরআন তেলাওয়াত ট্র্যাকার</div>
-    <div class="app-sub">আপনার দৈনিক তেলাওয়াত রেকর্ড করুন</div>
+    <div class="app-sub">হাফেজি কুরআন · পারা ও পৃষ্ঠা অনুযায়ী</div>
   </div>
 
-  <!-- NEXT READING HERO CARD -->
-  <div class="next-card" id="next-card">
-    <div class="next-card-glow"></div>
-    <div class="next-card-header">
+  <!-- HERO: NEXT READING -->
+  <div class="next-card">
+    <div class="nc-glow"></div><div class="nc-glow2"></div>
+    <div class="nc-top">
       <div class="nc-badge">
-        <div class="nc-badge-dot"></div>
-        <div class="nc-badge-text">পরবর্তী তেলাওয়াত</div>
+        <div class="nc-dot"></div>
+        <div class="nc-badge-txt">পরবর্তী তেলাওয়াত</div>
       </div>
-      <div class="nc-date" id="nc-date">—</div>
+      <div class="nc-updated" id="nc-updated">—</div>
     </div>
-    <div class="next-card-body">
-      <div class="nc-icon-wrap">
-        <div class="nc-icon">📖</div>
-        <div class="nc-icon-ring"></div>
+    <div class="nc-body">
+      <div class="nc-book-wrap">
+        <div class="nc-book">📖</div>
+        <div class="nc-ring"></div>
       </div>
-      <div class="nc-text">
+      <div class="nc-info">
         <div class="nc-label">যেখান থেকে শুরু করবেন</div>
         <div class="nc-surah" id="nc-surah">প্রথমে অবস্থান আপডেট করুন</div>
-        <div class="nc-detail" id="nc-detail">আপনার শেষ তেলাওয়াতের অবস্থান এখানে দেখাবে</div>
+        <div class="nc-ayah-line" id="nc-ayah">আপনার শেষ তেলাওয়াতের পর থেকে শুরু করুন</div>
       </div>
     </div>
     <div class="nc-pills" id="nc-pills">
-      <span class="pill pill-gray"><span class="pill-icon">📚</span> পারা —</span>
-      <span class="pill pill-gray"><span class="pill-icon">📄</span> পৃষ্ঠা —</span>
-      <span class="pill pill-gray"><span class="pill-icon">🔖</span> আয়াত —</span>
+      <span class="pill p-gold">📚 পারা —</span>
+      <span class="pill p-green">📄 পৃষ্ঠা —</span>
+      <span class="pill p-gray">🔖 আয়াত —</span>
     </div>
   </div>
 
   <!-- STATS -->
   <div class="stats-row">
     <div class="stat-box">
-      <div class="stat-val" id="st-days">০</div>
-      <div class="stat-lbl">মোট<br>রেকর্ড</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-val" id="st-streak">🔥 ০</div>
+      <div class="stat-val" id="st-streak">০</div>
       <div class="stat-lbl">ধারাবাহিক<br>দিন</div>
     </div>
     <div class="stat-box">
-      <div class="stat-val" id="st-juz">০</div>
-      <div class="stat-lbl">পারা<br>চলছে</div>
+      <div class="stat-val" id="st-juz">০/৩০</div>
+      <div class="stat-lbl">পারা<br>অবস্থান</div>
     </div>
     <div class="stat-box">
       <div class="stat-val" id="st-pct">০%</div>
@@ -857,91 +568,76 @@ select option { background: #163D27; color: var(--cream); }
   <!-- PROGRESS -->
   <div class="section">
     <div class="sec-head">
-      <div class="sec-icon">📊</div>
-      <div class="sec-title">সামগ্রিক অগ্রগতি</div>
+      <div class="sec-ico">📊</div>
+      <div class="sec-ttl">সামগ্রিক অগ্রগতি</div>
       <div class="sec-line"></div>
     </div>
-    <div class="progress-card">
+    <div class="prog-card">
       <div class="prog-top">
-        <div class="prog-pct-big" id="pp-big">০<span>%</span></div>
-        <div class="prog-info">
+        <div class="prog-big" id="pp-big">০<span>%</span></div>
+        <div class="prog-right">
           <div class="prog-done" id="pp-done">০ আয়াত পড়া হয়েছে</div>
-          <div class="prog-total">মোট ৬,২৩৬ আয়াত</div>
+          <div class="prog-tot">মোট ৬,২৩৬ আয়াত</div>
         </div>
       </div>
-      <div class="prog-bar-bg">
-        <div class="prog-bar-fill" id="prog-fill" style="width:0%"></div>
-      </div>
-      <div class="juz-mini-row" id="juz-dots"></div>
+      <div class="bar-bg"><div class="bar-fill" id="bar-fill" style="width:0%"></div></div>
+      <div class="juz-grid" id="juz-dots"></div>
     </div>
   </div>
 
   <!-- UPDATE FORM -->
   <div class="section">
     <div class="sec-head">
-      <div class="sec-icon">✏️</div>
-      <div class="sec-title">অবস্থান আপডেট</div>
+      <div class="sec-ico">✏️</div>
+      <div class="sec-ttl">তেলাওয়াত আপডেট</div>
       <div class="sec-line"></div>
     </div>
-    <div class="update-card">
-      <div class="update-card-header" onclick="toggleForm()">
-        <div class="uch-left">
-          <div class="uch-icon">📝</div>
+    <div class="upd-card">
+      <div class="upd-header" onclick="toggleForm()">
+        <div class="upd-hl">
+          <div class="upd-ico">📝</div>
           <div>
-            <div class="uch-title">আজকের তেলাওয়াত রেকর্ড করুন</div>
-            <div class="uch-sub">সূরা, আয়াত, পারা ও পৃষ্ঠা লিখুন</div>
+            <div class="upd-ttl">আজকের তেলাওয়াত শেষে আপডেট করুন</div>
+            <div class="upd-sub">পারা ও পৃষ্ঠা বেছে নিন — বাকি স্বয়ংক্রিয়</div>
           </div>
         </div>
-        <div class="uch-arrow" id="form-arrow">▼</div>
+        <div class="upd-arrow" id="form-arrow">▼</div>
       </div>
       <div class="form-body" id="form-body">
         <div class="form-inner">
 
-          <div class="form-section-label">📖 সূরা ও আয়াত</div>
-          <div class="form-grid-2">
-            <div class="fg">
-              <label>সূরা</label>
-              <select id="sel-surah" onchange="updateAyah()"></select>
-            </div>
-            <div class="fg">
-              <label>আয়াত নম্বর</label>
-              <select id="sel-ayah"></select>
-            </div>
-          </div>
-
-          <div class="divider-form"></div>
-
-          <div class="form-section-label">📚 পারা ও পৃষ্ঠা</div>
-          <div class="form-grid-3">
+          <div class="flabel">📚 পারা ও পৃষ্ঠা বেছে নিন</div>
+          <div class="fg2">
             <div class="fg">
               <label>পারা (জুয)</label>
-              <select id="sel-juz"></select>
+              <select id="sel-juz" onchange="onJuzChange()"></select>
             </div>
             <div class="fg">
               <label>পৃষ্ঠা নম্বর</label>
-              <input type="number" id="inp-page" min="1" max="604" placeholder="১-৬০৪">
-            </div>
-            <div class="fg">
-              <label>রুকু নম্বর</label>
-              <input type="number" id="inp-ruku" min="1" max="558" placeholder="ঐচ্ছিক">
+              <select id="sel-page" onchange="onPageChange()"></select>
             </div>
           </div>
 
-          <div class="divider-form"></div>
+          <!-- Auto-detected info -->
+          <div class="info-box" id="auto-info" style="display:none">
+            <div class="info-box-icon">✦</div>
+            <div class="info-box-text" id="auto-info-text">—</div>
+          </div>
 
-          <div class="form-section-label">🗒️ নোট</div>
-          <div class="form-grid-2">
+          <div class="form-div"></div>
+          <div class="flabel">🗒️ নোট (ঐচ্ছিক)</div>
+          <div class="fg2">
             <div class="fg">
               <label>সময় / স্থান</label>
               <input type="text" id="inp-note" placeholder="যেমন: ফজরের পরে" maxlength="40">
             </div>
             <div class="fg">
-              <label>অনুভূতি / মন্তব্য</label>
+              <label>মন্তব্য</label>
               <input type="text" id="inp-mood" placeholder="যেমন: অনেক মনোযোগ ছিল" maxlength="40">
             </div>
           </div>
 
-          <div style="height:0.6rem;"></div>
+          <div style="height:0.5rem"></div>
           <button class="btn-save" onclick="saveEntry()">✦ সংরক্ষণ করুন</button>
         </div>
       </div>
@@ -951,126 +647,345 @@ select option { background: #163D27; color: var(--cream); }
   <!-- HISTORY -->
   <div class="section">
     <div class="sec-head">
-      <div class="sec-icon">🗂️</div>
-      <div class="sec-title">তেলাওয়াতের ইতিহাস</div>
+      <div class="sec-ico">🗂️</div>
+      <div class="sec-ttl">তেলাওয়াতের ইতিহাস</div>
       <div class="sec-line"></div>
     </div>
-    <div class="history-card">
-      <div class="history-card-header">
-        <div class="hch-title">
-          সকল রেকর্ড
-          <span class="badge-count" id="hist-count">০</span>
-        </div>
-        <button class="btn-clear" onclick="clearAll()">সব মুছুন</button>
+    <div class="hist-card">
+      <div class="hist-head">
+        <div class="hist-ttl">সকল রেকর্ড <span class="badge-n" id="hist-cnt">০</span></div>
+        <button class="btn-clr" onclick="clearAll()">সব মুছুন</button>
       </div>
       <div class="h-list" id="h-list">
-        <div class="h-empty">
-          <span class="h-empty-icon">📜</span>
-          এখনও কোনো রেকর্ড নেই।<br>উপরে আজকের তেলাওয়াত লিখুন।
-        </div>
+        <div class="h-empty"><span class="h-empty-ico">📜</span>এখনও কোনো রেকর্ড নেই।<br>উপরে তেলাওয়াত শেষে আপডেট করুন।</div>
       </div>
     </div>
   </div>
 
   <div class="footer">✦ আল্লাহর রহমতে ✦</div>
 </div>
-
 <div class="toast" id="toast"></div>
 
 <script>
-/* ===== DATA ===== */
-const SURAHS = [
-  ["আল-ফাতিহা",7],["আল-বাকারা",286],["আল-ইমরান",200],["আন-নিসা",176],
-  ["আল-মায়িদা",120],["আল-আনআম",165],["আল-আরাফ",206],["আল-আনফাল",75],
-  ["আত-তাওবা",129],["ইউনুস",109],["হুদ",123],["ইউসুফ",111],
-  ["আর-রাদ",43],["ইবরাহিম",52],["আল-হিজর",99],["আন-নাহল",128],
-  ["আল-ইসরা",111],["আল-কাহফ",110],["মারইয়াম",98],["তা-হা",135],
-  ["আল-আম্বিয়া",112],["আল-হাজ্জ",78],["আল-মুমিনুন",118],["আন-নুর",64],
-  ["আল-ফুরকান",77],["আশ-শুআরা",227],["আন-নামল",93],["আল-কাসাস",88],
-  ["আল-আনকাবুত",69],["আর-রুম",60],["লুকমান",34],["আস-সাজদা",30],
-  ["আল-আহজাব",73],["সাবা",54],["ফাতির",45],["ইয়া-সিন",83],
-  ["আস-সাফফাত",182],["সাদ",88],["আয-যুমার",75],["গাফির",85],
-  ["ফুসসিলাত",54],["আশ-শুরা",53],["আয-যুখরুফ",89],["আদ-দুখান",59],
-  ["আল-জাসিয়া",37],["আল-আহকাফ",35],["মুহাম্মদ",38],["আল-ফাতহ",29],
-  ["আল-হুজুরাত",18],["কাফ",45],["আয-যারিয়াত",60],["আত-তুর",49],
-  ["আন-নাজম",62],["আল-কামার",55],["আর-রাহমান",78],["আল-ওয়াকিআ",96],
-  ["আল-হাদিদ",29],["আল-মুজাদিলা",22],["আল-হাশর",24],["আল-মুমতাহিনা",13],
-  ["আস-সাফ",14],["আল-জুমুআ",11],["আল-মুনাফিকুন",11],["আত-তাগাবুন",18],
-  ["আত-তালাক",12],["আত-তাহরিম",12],["আল-মুলক",30],["আল-কালাম",52],
-  ["আল-হাক্কা",52],["আল-মাআরিজ",44],["নুহ",28],["আল-জিন",28],
-  ["আল-মুজ্জাম্মিল",20],["আল-মুদ্দাসির",56],["আল-কিয়ামা",40],["আল-ইনসান",31],
-  ["আল-মুরসালাত",50],["আন-নাবা",40],["আন-নাযিআত",46],["আবাসা",42],
-  ["আত-তাকবির",29],["আল-ইনফিতার",19],["আল-মুতাফফিফিন",36],["আল-ইনশিকাক",25],
-  ["আল-বুরুজ",22],["আত-তারিক",17],["আল-আলা",19],["আল-গাশিয়া",26],
-  ["আল-ফাজর",30],["আল-বালাদ",20],["আশ-শামস",15],["আল-লায়ল",21],
-  ["আদ-দুহা",11],["আশ-শারহ",8],["আত-তিন",8],["আল-আলাক",19],
-  ["আল-কাদর",5],["আল-বাইয়িনা",8],["আয-যালযালা",8],["আল-আদিয়াত",11],
-  ["আল-কারিআ",11],["আত-তাকাসুর",8],["আল-আসর",3],["আল-হুমাযা",9],
-  ["আল-ফিল",5],["কুরাইশ",4],["আল-মাউন",7],["আল-কাউসার",3],
-  ["আল-কাফিরুন",6],["আন-নাসর",3],["আল-মাসাদ",5],["আল-ইখলাস",4],
-  ["আল-ফালাক",5],["আন-নাস",6]
+/* ══════════════════════════════════════════
+   HAFEZI QURAN: Page → (Juz, Surah, Ayah)
+   Standard 15-line Hafezi (Indo-Pak) mushaf
+   604 pages, 30 juz
+   ══════════════════════════════════════════ */
+
+// Each entry: [pageStart, juzNum, surahNum, ayahStart, surahNameBn]
+// This maps the FIRST ayah on each page of the Hafezi mushaf.
+const PAGE_MAP = [
+  [1,1,1,1,"আল-ফাতিহা"],[2,1,2,1,"আল-বাকারা"],[3,1,2,6,"আল-বাকারা"],
+  [4,1,2,17,"আল-বাকারা"],[5,1,2,25,"আল-বাকারা"],[6,1,2,30,"আল-বাকারা"],
+  [7,1,2,38,"আল-বাকারা"],[8,1,2,44,"আল-বাকারা"],[9,1,2,49,"আল-বাকারা"],
+  [10,1,2,55,"আল-বাকারা"],[11,1,2,61,"আল-বাকারা"],[12,1,2,65,"আল-বাকারা"],
+  [13,1,2,70,"আল-বাকারা"],[14,1,2,77,"আল-বাকারা"],[15,1,2,83,"আল-বাকারা"],
+  [16,1,2,88,"আল-বাকারা"],[17,1,2,94,"আল-বাকারা"],[18,1,2,100,"আল-বাকারা"],
+  [19,1,2,106,"আল-বাকারা"],[20,2,2,113,"আল-বাকারা"],[21,2,2,120,"আল-বাকারা"],
+  [22,2,2,127,"আল-বাকারা"],[23,2,2,135,"আল-বাকারা"],[24,2,2,142,"আল-বাকারা"],
+  [25,2,2,150,"আল-বাকারা"],[26,2,2,157,"আল-বাকারা"],[27,2,2,164,"আল-বাকারা"],
+  [28,2,2,170,"আল-বাকারা"],[29,2,2,176,"আল-বাকারা"],[30,2,2,182,"আল-বাকারা"],
+  [31,2,2,187,"আল-বাকারা"],[32,2,2,191,"আল-বাকারা"],[33,2,2,196,"আল-বাকারা"],
+  [34,2,2,203,"আল-বাকারা"],[35,2,2,211,"আল-বাকারা"],[36,2,2,220,"আল-বাকারা"],
+  [37,2,2,228,"আল-বাকারা"],[38,2,2,235,"আল-বাকারা"],[39,3,2,244,"আল-বাকারা"],
+  [40,3,2,249,"আল-বাকারা"],[41,3,2,255,"আল-বাকারা"],[42,3,2,261,"আল-বাকারা"],
+  [43,3,2,269,"আল-বাকারা"],[44,3,2,276,"আল-বাকারা"],[45,3,2,283,"আল-বাকারা"],
+  [46,3,3,1,"আল-ইমরান"],[47,3,3,9,"আল-ইমরান"],[48,3,3,16,"আল-ইমরান"],
+  [49,3,3,24,"আল-ইমরান"],[50,3,3,31,"আল-ইমরান"],[51,3,3,39,"আল-ইমরান"],
+  [52,3,3,46,"আল-ইমরান"],[53,3,3,54,"আল-ইমরান"],[54,4,3,62,"আল-ইমরান"],
+  [55,4,3,71,"আল-ইমরান"],[56,4,3,80,"আল-ইমরান"],[57,4,3,87,"আল-ইমরান"],
+  [58,4,3,95,"আল-ইমরান"],[59,4,3,102,"আল-ইমরান"],[60,4,3,110,"আল-ইমরান"],
+  [61,4,3,118,"আল-ইমরান"],[62,4,3,126,"আল-ইমরান"],[63,4,3,135,"আল-ইমরান"],
+  [64,4,3,144,"আল-ইমরান"],[65,4,3,154,"আল-ইমরান"],[66,4,3,163,"আল-ইমরান"],
+  [67,4,3,171,"আল-ইমরান"],[68,4,3,179,"আল-ইমরান"],[69,4,3,187,"আল-ইমরান"],
+  [70,4,3,195,"আল-ইমরান"],[71,5,4,1,"আন-নিসা"],[72,5,4,8,"আন-নিসা"],
+  [73,5,4,15,"আন-নিসা"],[74,5,4,24,"আন-নিসা"],[75,5,4,30,"আন-নিসা"],
+  [76,5,4,36,"আন-নিসা"],[77,5,4,43,"আন-নিসা"],[78,5,4,52,"আন-নিসা"],
+  [79,5,4,60,"আন-নিসা"],[80,5,4,67,"আন-নিসা"],[81,5,4,75,"আন-নিসা"],
+  [82,5,4,81,"আন-নিসা"],[83,5,4,87,"আন-নিসা"],[84,5,4,93,"আন-নিসা"],
+  [85,6,4,100,"আন-নিসা"],[86,6,4,107,"আন-নিসা"],[87,6,4,114,"আন-নিসা"],
+  [88,6,4,122,"আন-নিসা"],[89,6,4,130,"আন-নিসা"],[90,6,4,136,"আন-নিসা"],
+  [91,6,4,144,"আন-নিসা"],[92,6,4,152,"আন-নিসা"],[93,6,4,162,"আন-নিসা"],
+  [94,6,4,171,"আন-নিসা"],[95,6,5,1,"আল-মায়িদা"],[96,6,5,7,"আল-মায়িদা"],
+  [97,6,5,13,"আল-মায়িদা"],[98,6,5,19,"আল-মায়িদা"],[99,6,5,25,"আল-মায়িদা"],
+  [100,6,5,32,"আল-মায়িদা"],[101,7,5,38,"আল-মায়িদা"],[102,7,5,45,"আল-মায়িদা"],
+  [103,7,5,52,"আল-মায়িদা"],[104,7,5,58,"আল-মায়িদা"],[105,7,5,65,"আল-মায়িদা"],
+  [106,7,5,72,"আল-মায়িদা"],[107,7,5,79,"আল-মায়িদা"],[108,7,5,87,"আল-মায়িদা"],
+  [109,7,5,95,"আল-মায়িদা"],[110,7,5,102,"আল-মায়িদা"],[111,7,5,107,"আল-মায়িদা"],
+  [112,7,5,114,"আল-মায়িদা"],[113,7,6,1,"আল-আনআম"],[114,7,6,9,"আল-আনআম"],
+  [115,7,6,19,"আল-আনআম"],[116,7,6,28,"আল-আনআম"],[117,7,6,36,"আল-আনআম"],
+  [118,7,6,45,"আল-আনআম"],[119,7,6,53,"আল-আনআম"],[120,7,6,62,"আল-আনআম"],
+  [121,8,6,71,"আল-আনআম"],[122,8,6,81,"আল-আনআম"],[123,8,6,91,"আল-আনআম"],
+  [124,8,6,100,"আল-আনআম"],[125,8,6,111,"আল-আনআম"],[126,8,6,121,"আল-আনআম"],
+  [127,8,6,131,"আল-আনআম"],[128,8,6,141,"আল-আনআম"],[129,8,6,152,"আল-আনআম"],
+  [130,8,6,161,"আল-আনআম"],[131,8,7,1,"আল-আরাফ"],[132,8,7,9,"আল-আরাফ"],
+  [133,8,7,18,"আল-আরাফ"],[134,8,7,27,"আল-আরাফ"],[135,8,7,35,"আল-আরাফ"],
+  [136,8,7,43,"আল-আরাফ"],[137,8,7,52,"আল-আরাফ"],[138,8,7,58,"আল-আরাফ"],
+  [139,8,7,66,"আল-আরাফ"],[140,8,7,74,"আল-আরাফ"],[141,9,7,83,"আল-আরাফ"],
+  [142,9,7,92,"আল-আরাফ"],[143,9,7,101,"আল-আরাফ"],[144,9,7,110,"আল-আরাফ"],
+  [145,9,7,120,"আল-আরাফ"],[146,9,7,130,"আল-আরাফ"],[147,9,7,138,"আল-আরাফ"],
+  [148,9,7,147,"আল-আরাফ"],[149,9,7,155,"আল-আরাফ"],[150,9,7,163,"আল-আরাফ"],
+  [151,9,7,171,"আল-আরাফ"],[152,9,7,180,"আল-আরাফ"],[153,9,7,189,"আল-আরাফ"],
+  [154,9,7,199,"আল-আরাফ"],[155,9,8,1,"আল-আনফাল"],[156,9,8,9,"আল-আনফাল"],
+  [157,9,8,17,"আল-আনফাল"],[158,9,8,24,"আল-আনফাল"],[159,9,8,31,"আল-আনফাল"],
+  [160,9,8,41,"আল-আনফাল"],[161,10,8,50,"আল-আনফাল"],[162,10,8,60,"আল-আনফাল"],
+  [163,10,8,67,"আল-আনফাল"],[164,10,9,1,"আত-তাওবা"],[165,10,9,7,"আত-তাওবা"],
+  [166,10,9,13,"আত-তাওবা"],[167,10,9,19,"আত-তাওবা"],[168,10,9,26,"আত-তাওবা"],
+  [169,10,9,31,"আত-তাওবা"],[170,10,9,37,"আত-তাওবা"],[171,10,9,41,"আত-তাওবা"],
+  [172,10,9,48,"আত-তাওবা"],[173,10,9,55,"আত-তাওবা"],[174,10,9,62,"আত-তাওবা"],
+  [175,10,9,69,"আত-তাওবা"],[176,10,9,75,"আত-তাওবা"],[177,10,9,82,"আত-তাওবা"],
+  [178,10,9,90,"আত-তাওবা"],[179,10,9,97,"আত-তাওবা"],[180,10,9,104,"আত-তাওবা"],
+  [181,10,9,112,"আত-তাওবা"],[182,10,9,120,"আত-তাওবা"],[183,10,9,128,"আত-তাওবা"],
+  [184,11,10,1,"ইউনুস"],[185,11,10,8,"ইউনুস"],[186,11,10,16,"ইউনুস"],
+  [187,11,10,24,"ইউনুস"],[188,11,10,31,"ইউনুস"],[189,11,10,41,"ইউনুস"],
+  [190,11,10,53,"ইউনুস"],[191,11,10,62,"ইউনুস"],[192,11,10,71,"ইউনুস"],
+  [193,11,10,80,"ইউনুস"],[194,11,10,89,"ইউনুস"],[195,11,10,99,"ইউনুস"],
+  [196,11,10,108,"ইউনুস"],[197,11,11,1,"হুদ"],[198,11,11,7,"হুদ"],
+  [199,11,11,15,"হুদ"],[200,11,11,24,"হুদ"],[201,12,11,32,"হুদ"],
+  [202,12,11,40,"হুদ"],[203,12,11,48,"হুদ"],[204,12,11,57,"হুদ"],
+  [205,12,11,66,"হুদ"],[206,12,11,75,"হুদ"],[207,12,11,84,"হুদ"],
+  [208,12,11,93,"হুদ"],[209,12,11,100,"হুদ"],[210,12,11,109,"হুদ"],
+  [211,12,11,118,"হুদ"],[212,12,12,1,"ইউসুফ"],[213,12,12,8,"ইউসুফ"],
+  [214,12,12,15,"ইউসুফ"],[215,12,12,21,"ইউসুফ"],[216,12,12,28,"ইউসুফ"],
+  [217,12,12,36,"ইউসুফ"],[218,12,12,44,"ইউসুফ"],[219,12,12,52,"ইউসুফ"],
+  [220,12,12,60,"ইউসুফ"],[221,13,12,69,"ইউসুফ"],[222,13,12,77,"ইউসুফ"],
+  [223,13,12,85,"ইউসুফ"],[224,13,12,93,"ইউসুফ"],[225,13,12,101,"ইউসুফ"],
+  [226,13,12,108,"ইউসুফ"],[227,13,13,1,"আর-রাদ"],[228,13,13,8,"আর-রাদ"],
+  [229,13,13,15,"আর-রাদ"],[230,13,13,19,"আর-রাদ"],[231,13,13,26,"আর-রাদ"],
+  [232,13,13,32,"আর-রাদ"],[233,13,13,38,"আর-রাদ"],[234,13,14,1,"ইবরাহিম"],
+  [235,13,14,6,"ইবরাহিম"],[236,13,14,13,"ইবরাহিম"],[237,13,14,22,"ইবরাহিম"],
+  [238,13,14,31,"ইবরাহিম"],[239,13,14,41,"ইবরাহিম"],[240,13,14,49,"ইবরাহিম"],
+  [241,14,15,1,"আল-হিজর"],[242,14,15,9,"আল-হিজর"],[243,14,15,19,"আল-হিজর"],
+  [244,14,15,32,"আল-হিজর"],[245,14,15,45,"আল-হিজর"],[246,14,15,58,"আল-হিজর"],
+  [247,14,15,72,"আল-হিজর"],[248,14,15,85,"আল-হিজর"],[249,14,16,1,"আন-নাহল"],
+  [250,14,16,9,"আন-নাহল"],[251,14,16,18,"আন-নাহল"],[252,14,16,27,"আন-নাহল"],
+  [253,14,16,36,"আন-নাহল"],[254,14,16,47,"আন-নাহল"],[255,14,16,58,"আন-নাহল"],
+  [256,14,16,68,"আন-নাহল"],[257,14,16,79,"আন-নাহল"],[258,14,16,90,"আন-নাহল"],
+  [259,14,16,100,"আন-নাহল"],[260,14,16,111,"আন-নাহল"],[261,15,16,120,"আন-নাহল"],
+  [262,15,16,128,"আন-নাহল"],[263,15,17,1,"আল-ইসরা"],[264,15,17,8,"আল-ইসরা"],
+  [265,15,17,17,"আল-ইসরা"],[266,15,17,26,"আল-ইসরা"],[267,15,17,36,"আল-ইসরা"],
+  [268,15,17,45,"আল-ইসরা"],[269,15,17,55,"আল-ইসরা"],[270,15,17,65,"আল-ইসরা"],
+  [271,15,17,75,"আল-ইসরা"],[272,15,17,85,"আল-ইসরা"],[273,15,17,95,"আল-ইসরা"],
+  [274,15,17,105,"আল-ইসরা"],[275,15,18,1,"আল-কাহফ"],[276,15,18,8,"আল-কাহফ"],
+  [277,15,18,17,"আল-কাহফ"],[278,15,18,23,"আল-কাহফ"],[279,15,18,29,"আল-কাহফ"],
+  [280,16,18,36,"আল-কাহফ"],[281,16,18,46,"আল-কাহফ"],[282,16,18,55,"আল-কাহফ"],
+  [283,16,18,65,"আল-কাহফ"],[284,16,18,74,"আল-কাহফ"],[285,16,18,84,"আল-কাহফ"],
+  [286,16,18,95,"আল-কাহফ"],[287,16,18,103,"আল-কাহফ"],[288,16,18,110,"আল-কাহফ"],
+  [289,16,19,1,"মারইয়াম"],[290,16,19,12,"মারইয়াম"],[291,16,19,22,"মারইয়াম"],
+  [292,16,19,34,"মারইয়াম"],[293,16,19,45,"মারইয়াম"],[294,16,19,58,"মারইয়াম"],
+  [295,16,19,68,"মারইয়াম"],[296,16,19,77,"মারইয়াম"],[297,16,19,90,"মারইয়াম"],
+  [298,16,20,1,"তা-হা"],[299,16,20,10,"তা-হা"],[300,16,20,22,"তা-হা"],
+  [301,17,20,38,"তা-হা"],[302,17,20,52,"তা-হা"],[303,17,20,65,"তা-হা"],
+  [304,17,20,77,"তা-হা"],[305,17,20,90,"তা-হা"],[306,17,20,105,"তা-হা"],
+  [307,17,20,118,"তা-হা"],[308,17,20,130,"তা-হা"],[309,17,21,1,"আল-আম্বিয়া"],
+  [310,17,21,11,"আল-আম্বিয়া"],[311,17,21,24,"আল-আম্বিয়া"],[312,17,21,36,"আল-আম্বিয়া"],
+  [313,17,21,46,"আল-আম্বিয়া"],[314,17,21,58,"আল-আম্বিয়া"],[315,17,21,73,"আল-আম্বিয়া"],
+  [316,17,21,83,"আল-আম্বিয়া"],[317,17,21,95,"আল-আম্বিয়া"],[318,17,21,106,"আল-আম্বিয়া"],
+  [319,17,22,1,"আল-হাজ্জ"],[320,17,22,8,"আল-হাজ্জ"],[321,18,22,16,"আল-হাজ্জ"],
+  [322,18,22,24,"আল-হাজ্জ"],[323,18,22,31,"আল-হাজ্জ"],[324,18,22,38,"আল-হাজ্জ"],
+  [325,18,22,47,"আল-হাজ্জ"],[326,18,22,56,"আল-হাজ্জ"],[327,18,22,65,"আল-হাজ্জ"],
+  [328,18,22,73,"আল-হাজ্জ"],[329,18,23,1,"আল-মুমিনুন"],[330,18,23,11,"আল-মুমিনুন"],
+  [331,18,23,22,"আল-মুমিনুন"],[332,18,23,34,"আল-মুমিনুন"],[333,18,23,45,"আল-মুমিনুন"],
+  [334,18,23,57,"আল-মুমিনুন"],[335,18,23,68,"আল-মুমিনুন"],[336,18,23,79,"আল-মুমিনুন"],
+  [337,18,23,90,"আল-মুমিনুন"],[338,18,23,101,"আল-মুমিনুন"],[339,18,23,112,"আল-মুমিনুন"],
+  [340,18,24,1,"আন-নুর"],[341,19,24,7,"আন-নুর"],[342,19,24,15,"আন-নুর"],
+  [343,19,24,22,"আন-নুর"],[344,19,24,31,"আন-নুর"],[345,19,24,37,"আন-নুর"],
+  [346,19,24,44,"আন-নুর"],[347,19,24,54,"আন-নুর"],[348,19,24,62,"আন-নুর"],
+  [349,19,25,1,"আল-ফুরকান"],[350,19,25,10,"আল-ফুরকান"],[351,19,25,20,"আল-ফুরকান"],
+  [352,19,25,30,"আল-ফুরকান"],[353,19,25,40,"আল-ফুরকান"],[354,19,25,52,"আল-ফুরকান"],
+  [355,19,25,63,"আল-ফুরকান"],[356,19,26,1,"আশ-শুআরা"],[357,19,26,11,"আশ-শুআরা"],
+  [358,19,26,29,"আশ-শুআরা"],[359,19,26,46,"আশ-শুআরা"],[360,19,26,62,"আশ-শুআরা"],
+  [361,20,26,78,"আশ-শুআরা"],[362,20,26,98,"আশ-শুআরা"],[363,20,26,113,"আশ-শুআরা"],
+  [364,20,26,131,"আশ-শুআরা"],[365,20,26,150,"আশ-শুআরা"],[366,20,26,166,"আশ-শুআরা"],
+  [367,20,26,184,"আশ-শুআরা"],[368,20,26,200,"আশ-শুআরা"],[369,20,26,215,"আশ-শুআরা"],
+  [370,20,27,1,"আন-নামল"],[371,20,27,10,"আন-নামল"],[372,20,27,22,"আন-নামল"],
+  [373,20,27,34,"আন-নামল"],[374,20,27,46,"আন-নামল"],[375,20,27,56,"আন-নামল"],
+  [376,20,27,65,"আন-নামল"],[377,20,27,76,"আন-নামল"],[378,20,27,88,"আন-নামল"],
+  [379,20,28,1,"আল-কাসাস"],[380,20,28,8,"আল-কাসাস"],[381,21,28,17,"আল-কাসাস"],
+  [382,21,28,26,"আল-কাসাস"],[383,21,28,35,"আল-কাসাস"],[384,21,28,44,"আল-কাসাস"],
+  [385,21,28,52,"আল-কাসাস"],[386,21,28,62,"আল-কাসাস"],[387,21,28,72,"আল-কাসাস"],
+  [388,21,28,82,"আল-কাসাস"],[389,21,29,1,"আল-আনকাবুত"],[390,21,29,8,"আল-আনকাবুত"],
+  [391,21,29,17,"আল-আনকাবুত"],[392,21,29,26,"আল-আনকাবুত"],[393,21,29,35,"আল-আনকাবুত"],
+  [394,21,29,45,"আল-আনকাবুত"],[395,21,29,54,"আল-আনকাবুত"],[396,21,29,64,"আল-আনকাবুত"],
+  [397,21,30,1,"আর-রুম"],[398,21,30,9,"আর-রুম"],[399,21,30,20,"আর-রুম"],
+  [400,21,30,30,"আর-রুম"],[401,22,30,38,"আর-রুম"],[402,22,30,47,"আর-রুম"],
+  [403,22,30,54,"আর-রুম"],[404,22,31,1,"লুকমান"],[405,22,31,9,"লুকমান"],
+  [406,22,31,18,"লুকমান"],[407,22,31,28,"লুকমান"],[408,22,32,1,"আস-সাজদা"],
+  [409,22,32,9,"আস-সাজদা"],[410,22,32,18,"আস-সাজদা"],[411,22,32,26,"আস-সাজদা"],
+  [412,22,33,1,"আল-আহজাব"],[413,22,33,7,"আল-আহজাব"],[414,22,33,16,"আল-আহজাব"],
+  [415,22,33,24,"আল-আহজাব"],[416,22,33,31,"আল-আহজাব"],[417,22,33,38,"আল-আহজাব"],
+  [418,22,33,46,"আল-আহজাব"],[419,22,33,54,"আল-আহজাব"],[420,22,33,63,"আল-আহজাব"],
+  [421,23,34,1,"সাবা"],[422,23,34,8,"সাবা"],[423,23,34,16,"সাবা"],
+  [424,23,34,23,"সাবা"],[425,23,34,31,"সাবা"],[426,23,34,40,"সাবা"],
+  [427,23,34,49,"সাবা"],[428,23,35,1,"ফাতির"],[429,23,35,8,"ফাতির"],
+  [430,23,35,16,"ফাতির"],[431,23,35,24,"ফাতির"],[432,23,35,32,"ফাতির"],
+  [433,23,35,41,"ফাতির"],[434,23,36,1,"ইয়া-সিন"],[435,23,36,11,"ইয়া-সিন"],
+  [436,23,36,22,"ইয়া-সিন"],[437,23,36,34,"ইয়া-সিন"],[438,23,36,47,"ইয়া-সিন"],
+  [439,23,36,60,"ইয়া-সিন"],[440,23,36,72,"ইয়া-সিন"],[441,23,37,1,"আস-সাফফাত"],
+  [442,23,37,12,"আস-সাফফাত"],[443,23,37,27,"আস-সাফফাত"],[444,24,37,47,"আস-সাফফাত"],
+  [445,24,37,66,"আস-সাফফাত"],[446,24,37,84,"আস-সাফফাত"],[447,24,37,101,"আস-সাফফাত"],
+  [448,24,37,118,"আস-সাফফাত"],[449,24,37,139,"আস-সাফফাত"],[450,24,37,160,"আস-সাফফাত"],
+  [451,24,37,176,"আস-সাফফাত"],[452,24,38,1,"সাদ"],[453,24,38,10,"সাদ"],
+  [454,24,38,22,"সাদ"],[455,24,38,34,"সাদ"],[456,24,38,45,"সাদ"],
+  [457,24,38,58,"সাদ"],[458,24,38,71,"সাদ"],[459,24,38,83,"সাদ"],
+  [460,24,39,1,"আয-যুমার"],[461,24,39,8,"আয-যুমার"],[462,24,39,17,"আয-যুমার"],
+  [463,24,39,27,"আয-যুমার"],[464,24,39,36,"আয-যুমার"],[465,24,39,46,"আয-যুমার"],
+  [466,24,39,56,"আয-যুমার"],[467,24,39,64,"আয-যুমার"],[468,24,39,72,"আয-যুমার"],
+  [469,25,40,1,"গাফির"],[470,25,40,9,"গাফির"],[471,25,40,20,"গাফির"],
+  [472,25,40,31,"গাফির"],[473,25,40,40,"গাফির"],[474,25,40,51,"গাফির"],
+  [475,25,40,61,"গাফির"],[476,25,40,72,"গাফির"],[477,25,40,83,"গাফির"],
+  [478,25,41,1,"ফুসসিলাত"],[479,25,41,9,"ফুসসিলাত"],[480,25,41,19,"ফুসসিলাত"],
+  [481,25,41,29,"ফুসসিলাত"],[482,25,41,38,"ফুসসিলাত"],[483,25,41,47,"ফুসসিলাত"],
+  [484,25,42,1,"আশ-শুরা"],[485,25,42,8,"আশ-শুরা"],[486,25,42,18,"আশ-শুরা"],
+  [487,25,42,27,"আশ-শুরা"],[488,25,42,36,"আশ-শুরা"],[489,25,42,45,"আশ-শুরা"],
+  [490,25,42,51,"আশ-শুরা"],[491,26,43,1,"আয-যুখরুফ"],[492,26,43,9,"আয-যুখরুফ"],
+  [493,26,43,20,"আয-যুখরুফ"],[494,26,43,33,"আয-যুখরুফ"],[495,26,43,46,"আয-যুখরুফ"],
+  [496,26,43,57,"আয-যুখরুফ"],[497,26,43,69,"আয-যুখরুফ"],[498,26,43,80,"আয-যুখরুফ"],
+  [499,26,44,1,"আদ-দুখান"],[500,26,44,17,"আদ-দুখান"],[501,26,44,33,"আদ-দুখান"],
+  [502,26,44,49,"আদ-দুখান"],[503,26,45,1,"আল-জাসিয়া"],[504,26,45,10,"আল-জাসিয়া"],
+  [505,26,45,20,"আল-জাসিয়া"],[506,26,45,28,"আল-জাসিয়া"],[507,26,46,1,"আল-আহকাফ"],
+  [508,26,46,9,"আল-আহকাফ"],[509,26,46,18,"আল-আহকাফ"],[510,26,46,27,"আল-আহকাফ"],
+  [511,27,47,1,"মুহাম্মদ"],[512,27,47,9,"মুহাম্মদ"],[513,27,47,18,"মুহাম্মদ"],
+  [514,27,47,27,"মুহাম্মদ"],[515,27,47,35,"মুহাম্মদ"],[516,27,48,1,"আল-ফাতহ"],
+  [517,27,48,9,"আল-ফাতহ"],[518,27,48,18,"আল-ফাতহ"],[519,27,48,27,"আল-ফাতহ"],
+  [520,27,49,1,"আল-হুজুরাত"],[521,27,49,7,"আল-হুজুরাত"],[522,27,49,13,"আল-হুজুরাত"],
+  [523,27,50,1,"কাফ"],[524,27,50,16,"কাফ"],[525,27,50,30,"কাফ"],
+  [526,27,50,41,"কাফ"],[527,27,51,1,"আয-যারিয়াত"],[528,27,51,13,"আয-যারিয়াত"],
+  [529,27,51,24,"আয-যারিয়াত"],[530,27,51,38,"আয-যারিয়াত"],[531,27,51,52,"আয-যারিয়াত"],
+  [532,27,52,1,"আত-তুর"],[533,27,52,16,"আত-তুর"],[534,28,52,31,"আত-তুর"],
+  [535,28,52,44,"আত-তুর"],[536,28,53,1,"আন-নাজম"],[537,28,53,17,"আন-নাজম"],
+  [538,28,53,33,"আন-নাজম"],[539,28,53,51,"আন-নাজম"],[540,28,54,1,"আল-কামার"],
+  [541,28,54,17,"আল-কামার"],[542,28,54,33,"আল-কামার"],[543,28,54,48,"আল-কামার"],
+  [544,28,55,1,"আর-রাহমান"],[545,28,55,17,"আর-রাহমান"],[546,28,55,33,"আর-রাহমান"],
+  [547,28,55,50,"আর-রাহমান"],[548,28,55,64,"আর-রাহমান"],[549,28,56,1,"আল-ওয়াকিআ"],
+  [550,28,56,17,"আল-ওয়াকিআ"],[551,28,56,35,"আল-ওয়াকিআ"],[552,28,56,57,"আল-ওয়াকিআ"],
+  [553,28,56,75,"আল-ওয়াকিআ"],[554,29,57,1,"আল-হাদিদ"],[555,29,57,9,"আল-হাদিদ"],
+  [556,29,57,18,"আল-হাদিদ"],[557,29,57,25,"আল-হাদিদ"],[558,29,58,1,"আল-মুজাদিলা"],
+  [559,29,58,8,"আল-মুজাদিলা"],[560,29,58,14,"আল-মুজাদিলা"],[561,29,59,1,"আল-হাশর"],
+  [562,29,59,8,"আল-হাশর"],[563,29,59,16,"আল-হাশর"],[564,29,60,1,"আল-মুমতাহিনা"],
+  [565,29,60,7,"আল-মুমতাহিনা"],[566,29,61,1,"আস-সাফ"],[567,29,62,1,"আল-জুমুআ"],
+  [568,29,63,1,"আল-মুনাফিকুন"],[569,29,63,9,"আল-মুনাফিকুন"],[570,29,64,1,"আত-তাগাবুন"],
+  [571,29,64,11,"আত-তাগাবুন"],[572,29,65,1,"আত-তালাক"],[573,29,65,6,"আত-তালাক"],
+  [574,29,66,1,"আত-তাহরিম"],[575,29,66,6,"আত-তাহরিম"],[576,29,67,1,"আল-মুলক"],
+  [577,29,67,11,"আল-মুলক"],[578,29,67,20,"আল-মুলক"],[579,29,67,28,"আল-মুলক"],
+  [580,30,68,1,"আল-কালাম"],[581,30,68,18,"আল-কালাম"],[582,30,68,35,"আল-কালাম"],
+  [583,30,68,51,"আল-কালাম"],[584,30,69,1,"আল-হাক্কা"],[585,30,69,19,"আল-হাক্কা"],
+  [586,30,69,38,"আল-হাক্কা"],[587,30,70,1,"আল-মাআরিজ"],[588,30,70,19,"আল-মাআরিজ"],
+  [589,30,70,36,"আল-মাআরিজ"],[590,30,71,1,"নুহ"],[591,30,71,16,"নুহ"],
+  [592,30,72,1,"আল-জিন"],[593,30,72,15,"আল-জিন"],[594,30,73,1,"আল-মুজ্জাম্মিল"],
+  [595,30,74,1,"আল-মুদ্দাসির"],[596,30,74,22,"আল-মুদ্দাসির"],[597,30,74,42,"আল-মুদ্দাসির"],
+  [598,30,75,1,"আল-কিয়ামা"],[599,30,76,1,"আল-ইনসান"],[600,30,76,22,"আল-ইনসান"],
+  [601,30,77,1,"আল-মুরসালাত"],[602,30,78,1,"আন-নাবা"],[603,30,79,1,"আন-নাযিআত"],
+  [604,30,80,1,"আবাসা"],
 ];
-const TOTAL = SURAHS.reduce((s,[,a])=>s+a,0);
-const BN = s => s.toString().replace(/[0-9]/g, d=>'০১২৩৪৫৬৭৮৯'[d]);
 
+// Juz page ranges
+const JUZ_PAGES = [
+  [1,1,19],[2,20,38],[3,39,53],[4,54,70],[5,71,84],
+  [6,85,100],[7,101,120],[8,121,140],[9,141,160],[10,161,183],
+  [11,184,200],[12,201,220],[13,221,240],[14,241,260],[15,261,280],
+  [16,281,300],[17,301,320],[18,321,340],[19,341,360],[20,361,380],
+  [21,381,400],[22,401,420],[23,421,443],[24,444,467],[25,468,490],
+  [26,491,510],[27,511,533],[28,534,553],[29,554,575],[30,576,604]
+];
+
+// Total ayahs per surah for progress calc
+const SURAH_AYAHS = [
+  7,286,200,176,120,165,206,75,129,109,123,111,43,52,99,128,111,110,98,135,
+  112,78,118,64,77,227,93,88,69,60,34,30,73,54,45,83,182,88,75,85,
+  54,53,89,59,37,35,38,29,18,45,60,49,62,55,78,96,29,22,24,13,
+  14,11,11,18,12,12,30,52,52,44,28,28,20,56,40,31,50,40,46,42,
+  29,19,36,25,22,17,19,26,30,20,15,21,11,8,8,19,5,8,8,11,
+  11,8,3,9,5,4,7,3,6,3,5,4,5,6
+];
+const TOTAL = SURAH_AYAHS.reduce((a,b)=>a+b,0);
+const BN = n => n.toString().replace(/[0-9]/g,d=>'০১২৩৪৫৬৭৮৯'[d]);
+
+function getPageInfo(pg) {
+  // Find the entry for this page (last entry with pageStart <= pg)
+  let info = PAGE_MAP[0];
+  for(const row of PAGE_MAP) { if(row[0] <= pg) info = row; else break; }
+  return { juz: info[1], surahNum: info[2], ayah: info[3], surahName: info[4] };
+}
+
+// Total ayahs done up to surahNum-1, plus ayahStart
+function calcDone(sn, ay) {
+  let t = 0;
+  for(let i=0;i<sn-1;i++) t += SURAH_AYAHS[i];
+  return t + ay;
+}
+
+/* ── STATE ── */
 let state = { history: [] };
+function lsLoad(){ try{ const d=localStorage.getItem('qt_v5'); if(d) state=JSON.parse(d); }catch(e){} }
+function lsSave(){ try{ localStorage.setItem('qt_v5',JSON.stringify(state)); }catch(e){} }
 
-function ls_load() {
-  try { const d=localStorage.getItem('qt_v4'); if(d) state=JSON.parse(d); } catch(e){}
-}
-function ls_save() {
-  try { localStorage.setItem('qt_v4', JSON.stringify(state)); } catch(e){}
-}
-
-/* ===== INIT ===== */
-function init() {
-  const ss = document.getElementById('sel-surah');
-  SURAHS.forEach(([n,a],i)=>{
+/* ── INIT ── */
+function init(){
+  // Juz select
+  const sj = document.getElementById('sel-juz');
+  JUZ_PAGES.forEach(([jn,ps,pe])=>{
     const o=document.createElement('option');
-    o.value=i+1;
-    o.textContent=`${i+1}. ${n} (${a})`;
-    ss.appendChild(o);
-  });
-
-  const sj=document.getElementById('sel-juz');
-  const none=document.createElement('option');
-  none.value=''; none.textContent='পারা বেছে নিন';
-  sj.appendChild(none);
-  for(let i=1;i<=30;i++){
-    const o=document.createElement('option');
-    o.value=i; o.textContent=`পারা ${BN(i)}`;
+    o.value=jn;
+    o.textContent=`পারা ${BN(jn)} (পৃষ্ঠা ${BN(ps)}–${BN(pe)})`;
     sj.appendChild(o);
-  }
+  });
+  sj.value = 1;
+
+  // Page select
+  fillPages(1);
 
   // Juz dots
-  const dots=document.getElementById('juz-dots');
+  const dots = document.getElementById('juz-dots');
   for(let i=1;i<=30;i++){
     const d=document.createElement('div');
-    d.className='juz-dot';
-    d.id=`jd-${i}`;
-    d.title=`পারা ${BN(i)}`;
+    d.className='jd'; d.id=`jd-${i}`; d.title=`পারা ${BN(i)}`;
     dots.appendChild(d);
   }
 
-  updateAyah();
   render();
 }
 
-function updateAyah(){
-  const si=parseInt(document.getElementById('sel-surah').value)-1;
-  const max=SURAHS[si][1];
-  const sa=document.getElementById('sel-ayah');
-  const prev=parseInt(sa.value)||1;
-  sa.innerHTML='';
-  for(let i=1;i<=max;i++){
+function fillPages(juzNum){
+  const sp = document.getElementById('sel-page');
+  const juzInfo = JUZ_PAGES[juzNum-1];
+  const [,ps,pe] = juzInfo;
+  const prevPage = parseInt(sp.dataset.val)||ps;
+  sp.innerHTML='';
+  for(let p=ps;p<=pe;p++){
     const o=document.createElement('option');
-    o.value=i; o.textContent=`${BN(i)} নং আয়াত`;
-    sa.appendChild(o);
+    o.value=p; o.textContent=`পৃষ্ঠা ${BN(p)}`;
+    sp.appendChild(o);
   }
-  sa.value=Math.min(prev,max);
+  // try to restore previous value if within range
+  sp.value = (prevPage>=ps&&prevPage<=pe) ? prevPage : ps;
+  sp.dataset.val = sp.value;
+  showAutoInfo();
 }
 
-/* ===== FORM TOGGLE ===== */
+function onJuzChange(){
+  const jn = parseInt(document.getElementById('sel-juz').value);
+  document.getElementById('sel-page').dataset.val='';
+  fillPages(jn);
+}
+
+function onPageChange(){
+  const sp=document.getElementById('sel-page');
+  sp.dataset.val=sp.value;
+  showAutoInfo();
+}
+
+function showAutoInfo(){
+  const pg=parseInt(document.getElementById('sel-page').value)||1;
+  const info=getPageInfo(pg);
+  const box=document.getElementById('auto-info');
+  const txt=document.getElementById('auto-info-text');
+  box.style.display='flex';
+  txt.innerHTML=`স্বয়ংক্রিয়ভাবে নির্ধারিত: <span class="info-val">${info.surahNum}. ${info.surahName}</span>, <span class="info-val">${BN(info.ayah)} নং আয়াত</span> থেকে — পারা ${BN(info.juz)}`;
+}
+
+/* ── FORM TOGGLE ── */
 let formOpen=false;
 function toggleForm(){
   formOpen=!formOpen;
@@ -1078,21 +993,19 @@ function toggleForm(){
   document.getElementById('form-arrow').classList.toggle('open',formOpen);
   if(formOpen && state.history.length>0){
     const l=state.history[0];
-    document.getElementById('sel-surah').value=l.s;
-    updateAyah();
-    document.getElementById('sel-ayah').value=l.a;
-    if(l.j) document.getElementById('sel-juz').value=l.j;
-    if(l.pg) document.getElementById('inp-page').value=l.pg;
-    if(l.rk) document.getElementById('inp-ruku').value=l.rk;
+    document.getElementById('sel-juz').value=l.j;
+    fillPages(l.j);
+    document.getElementById('sel-page').value=l.pg;
+    document.getElementById('sel-page').dataset.val=l.pg;
+    showAutoInfo();
+  } else if(formOpen) {
+    showAutoInfo();
   }
 }
 
-/* ===== CALCULATIONS ===== */
-function calcDoneAyahs(s,a){
-  let t=0;
-  for(let i=0;i<s-1;i++) t+=SURAHS[i][1];
-  return t+a;
-}
+/* ── STREAK ── */
+function getTodayKey(){ return new Date().toISOString().slice(0,10); }
+function getToday(){ return new Date().toLocaleDateString('bn-BD',{day:'numeric',month:'long',year:'numeric'}); }
 
 function calcStreak(){
   if(!state.history.length) return 0;
@@ -1100,130 +1013,111 @@ function calcStreak(){
   const today=getTodayKey();
   const yest=new Date(Date.now()-86400000).toISOString().slice(0,10);
   if(dates[0]!==today&&dates[0]!==yest) return 0;
-  const d=new Date(dates[0]); let streak=0;
+  const d=new Date(dates[0]); let s=0;
   for(const dk of dates){
-    if(dk===d.toISOString().slice(0,10)){streak++;d.setDate(d.getDate()-1);}
+    if(dk===d.toISOString().slice(0,10)){s++;d.setDate(d.getDate()-1);}
     else break;
   }
-  return streak;
+  return s;
 }
 
-function getToday(){
-  return new Date().toLocaleDateString('bn-BD',{day:'numeric',month:'long',year:'numeric'});
-}
-function getTodayKey(){
-  return new Date().toISOString().slice(0,10);
-}
-
-/* ===== RENDER ===== */
+/* ── RENDER ── */
 function render(){
-  const latest=state.history[0];
+  const latest = state.history[0];
 
-  // Next reading card
   if(latest){
-    const sn=SURAHS[latest.s-1][0];
-    document.getElementById('nc-surah').textContent=`${BN(latest.s)}. ${sn}`;
-    document.getElementById('nc-detail').textContent=
-      `${BN(latest.a)} নং আয়াত থেকে পড়া শুরু করুন`;
-    document.getElementById('nc-date').textContent=latest.d;
+    const {surahName,surahNum,ayah,juz} = latest.info;
+    document.getElementById('nc-surah').textContent=`${BN(surahNum)}. ${surahName}`;
+    document.getElementById('nc-ayah').textContent=`${BN(ayah)} নং আয়াত থেকে পড়া শুরু করুন`;
+    document.getElementById('nc-updated').textContent=latest.d;
 
     const pills=document.getElementById('nc-pills');
     pills.innerHTML='';
-    const pilldefs=[
-      ['pill-gold','📚',`পারা ${latest.j ? BN(latest.j) : '—'}`],
-      ['pill-green','📄',`পৃষ্ঠা ${latest.pg ? BN(latest.pg) : '—'}`],
-      ['pill-gray','🔖',`আয়াত ${BN(latest.a)}`],
+    const defs=[
+      ['p-gold','📚',`পারা ${BN(juz)}`],
+      ['p-green','📄',`পৃষ্ঠা ${BN(latest.pg)}`],
+      ['p-gray','🔖',`আয়াত ${BN(ayah)}`],
     ];
-    if(latest.note) pilldefs.push(['pill-gray','🕌',latest.note]);
-    pilldefs.forEach(([cls,ic,tx])=>{
+    if(latest.note) defs.push(['p-gray','🕌',latest.note]);
+    defs.forEach(([c,ic,tx])=>{
       const sp=document.createElement('span');
-      sp.className=`pill ${cls}`;
-      sp.innerHTML=`<span class="pill-icon">${ic}</span>${tx}`;
+      sp.className=`pill ${c}`;
+      sp.innerHTML=`${ic} ${tx}`;
       pills.appendChild(sp);
     });
+
+    const done=calcDone(surahNum,ayah);
+    const pct=Math.round((done/TOTAL)*100);
+    document.getElementById('pp-big').innerHTML=BN(pct)+'<span>%</span>';
+    document.getElementById('bar-fill').style.width=pct+'%';
+    document.getElementById('pp-done').textContent=BN(done)+' আয়াত পড়া হয়েছে';
+    document.getElementById('st-pct').textContent=BN(pct)+'%';
+    document.getElementById('st-juz').textContent=BN(juz)+'/৩০';
+
+    // Juz dots
+    for(let i=1;i<=30;i++){
+      const el=document.getElementById(`jd-${i}`);
+      if(!el) continue;
+      el.className='jd';
+      if(i<juz) el.classList.add('done');
+      else if(i===juz) el.classList.add('current');
+    }
   } else {
-    document.getElementById('nc-date').textContent='আজকের তারিখ: '+getToday();
+    document.getElementById('nc-updated').textContent='আজকের তারিখ: '+getToday();
   }
 
-  // Stats
-  const done = latest ? calcDoneAyahs(latest.s,latest.a) : 0;
-  const pct = Math.round((done/TOTAL)*100);
-  document.getElementById('st-days').textContent=BN(state.history.length);
-  document.getElementById('st-streak').textContent='🔥 '+BN(calcStreak());
-  document.getElementById('st-juz').textContent=BN(latest?.j||0);
-  document.getElementById('st-pct').textContent=BN(pct)+'%';
-
-  // Progress
-  document.getElementById('pp-big').innerHTML=BN(pct)+'<span>%</span>';
-  document.getElementById('prog-fill').style.width=pct+'%';
-  document.getElementById('pp-done').textContent=BN(done)+' আয়াত পড়া হয়েছে';
-
-  // Juz dots
-  const curJuz=latest?.j||0;
-  for(let i=1;i<=30;i++){
-    const d=document.getElementById(`jd-${i}`);
-    if(!d) continue;
-    d.className='juz-dot';
-    if(i<curJuz) d.classList.add('done');
-    else if(i===curJuz) d.classList.add('current');
-  }
-
-  // History
+  document.getElementById('st-streak').textContent=BN(calcStreak());
+  document.getElementById('hist-cnt').textContent=BN(state.history.length);
   renderHistory();
 }
 
 function renderHistory(){
   const list=document.getElementById('h-list');
-  document.getElementById('hist-count').textContent=BN(state.history.length);
-
   if(!state.history.length){
-    list.innerHTML=`<div class="h-empty"><span class="h-empty-icon">📜</span>এখনও কোনো রেকর্ড নেই।<br>উপরে আজকের তেলাওয়াত লিখুন।</div>`;
+    list.innerHTML=`<div class="h-empty"><span class="h-empty-ico">📜</span>এখনও কোনো রেকর্ড নেই।<br>উপরে তেলাওয়াত শেষে আপডেট করুন।</div>`;
     return;
   }
-
-  list.innerHTML=state.history.slice(0,25).map((h,i)=>{
-    const nm=SURAHS[h.s-1][0];
-    const pills=[
-      h.j ? `<span class="h-pill hp-juz">পারা ${BN(h.j)}</span>` : '',
-      h.pg ? `<span class="h-pill hp-page">পৃষ্ঠা ${BN(h.pg)}</span>` : '',
-      `<span class="h-pill hp-ayah">${BN(h.a)} নং আয়াত</span>`,
-      h.note ? `<span class="h-pill hp-note">${h.note}</span>` : '',
-      h.mood ? `<span class="h-pill hp-note">${h.mood}</span>` : '',
+  list.innerHTML=state.history.slice(0,30).map((h,i)=>{
+    const {surahName,surahNum,ayah,juz}=h.info;
+    const tags=[
+      `<span class="ht ht-j">পারা ${BN(juz)}</span>`,
+      `<span class="ht ht-p">পৃষ্ঠা ${BN(h.pg)}</span>`,
+      `<span class="ht ht-a">${BN(ayah)} নং আয়াত</span>`,
+      h.note?`<span class="ht ht-n">${h.note}</span>`:'',
+      h.mood?`<span class="ht ht-n">${h.mood}</span>`:'',
     ].filter(Boolean).join('');
-
     return `<div class="h-item">
       <div class="h-num">${BN(i+1)}</div>
       <div class="h-main">
-        <div class="h-surah">${BN(h.s)}. ${nm}</div>
-        <div class="h-pills">${pills}</div>
+        <div class="h-surah">${BN(surahNum)}. ${surahName}</div>
+        <div class="h-tags">${tags}</div>
       </div>
       <div class="h-right">
         <div class="h-date">${h.d}</div>
-        <button class="btn-del" onclick="delEntry(${i})" title="মুছুন">✕</button>
+        <button class="btn-del" onclick="delEntry(${i})">✕</button>
       </div>
     </div>`;
   }).join('');
 }
 
-/* ===== SAVE ===== */
+/* ── SAVE ── */
 function saveEntry(){
-  const s=parseInt(document.getElementById('sel-surah').value);
-  const a=parseInt(document.getElementById('sel-ayah').value);
-  const j=parseInt(document.getElementById('sel-juz').value)||null;
-  const pg=parseInt(document.getElementById('inp-page').value)||null;
-  const rk=parseInt(document.getElementById('inp-ruku').value)||null;
+  const juz=parseInt(document.getElementById('sel-juz').value);
+  const pg=parseInt(document.getElementById('sel-page').value);
   const note=document.getElementById('inp-note').value.trim();
   const mood=document.getElementById('inp-mood').value.trim();
+  const info=getPageInfo(pg);
 
-  state.history.unshift({s,a,j,pg,rk,note,mood,d:getToday(),dk:getTodayKey(),ts:Date.now()});
+  const entry={juz,pg,note,mood,info,d:getToday(),dk:getTodayKey(),ts:Date.now()};
+  // Replicate juz at top level for easy access
+  entry.j=info.juz;
+
+  state.history.unshift(entry);
   if(state.history.length>80) state.history.pop();
-  ls_save();
-  render();
+  lsSave(); render();
 
-  // close form & clear
+  // close form
   formOpen=true; toggleForm();
-  document.getElementById('inp-page').value='';
-  document.getElementById('inp-ruku').value='';
   document.getElementById('inp-note').value='';
   document.getElementById('inp-mood').value='';
 
@@ -1232,14 +1126,14 @@ function saveEntry(){
 
 function delEntry(i){
   state.history.splice(i,1);
-  ls_save(); render();
+  lsSave(); render();
   toast('রেকর্ড মুছে ফেলা হয়েছে');
 }
 
 function clearAll(){
   if(confirm('সব রেকর্ড মুছে ফেলবেন?')){
     state.history=[];
-    ls_save(); render();
+    lsSave(); render();
     toast('সব রেকর্ড মুছে ফেলা হয়েছে');
   }
 }
@@ -1248,10 +1142,10 @@ function toast(msg){
   const t=document.getElementById('toast');
   t.textContent=msg;
   t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),3000);
+  setTimeout(()=>t.classList.remove('show'),3200);
 }
 
-ls_load();
+lsLoad();
 init();
 </script>
 </body>
